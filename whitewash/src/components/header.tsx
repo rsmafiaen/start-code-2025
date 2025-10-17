@@ -11,21 +11,21 @@ export function Header() {
     return (
         <div className="h-[100px] bg-[#023ea5] flex flex-row items-center justify-evenly px-5 text-white gap-5">
             <Link href="/">
-                <Image src={logo} alt={"REMA 1000"}/>
-            </Link>
+                <Image src={logo} alt={"REMA 1000"} />
+            </Link> 
 
             <div className="flex-3 flex flex-row items-center justify-evenly text-white">
-                <HeaderItem img={dinner} link="oppskrifter" title="Oppskrifter"/>
-                <HeaderItem img={sale} link="tilbud" title="Tilbud og kampanjer"/>
-                <HeaderItem img={gps} link="butikker" title="Butikker"/>
-                <HeaderItem img={globe} link="ansvar" title="Vårt ansvar"/>
+                <HeaderItem img={dinner} link="oppskrifter" title="Oppskrifter" />
+                <HeaderItem img={sale} link="tilbud" title="Tilbud og kampanjer" />
+                <HeaderItem img={gps} link="butikker" title="Butikker" />
+                <HeaderItem img={globe} link="ansvar" title="Vårt ansvar" />
             </div>
 
             <div className="flex-3 max-w-[350px]">
-                <input name="search" className="bg-white w-full rounded text-black p-3 placeholder-gray-600" placeholder="Søk på rema.no" autoComplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="global-search-suggestions"></input>
+                <input name="search" className="bg-white w-full rounded text-black p-3 placeholder-gray-600" placeholder="Søk på rema.no" />
             </div>
 
-            <a href="/handleliste">Handleliste</a>
+            <Link href="/handleliste">Handleliste</Link>
         </div>
     )
 }

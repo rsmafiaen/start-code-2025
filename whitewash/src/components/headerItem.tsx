@@ -8,11 +8,10 @@ type headerItemProps = {
 }
 
 export function HeaderItem(props: headerItemProps) {
-
     return (
         <div className="mr-8">
             <Link className="flex flex-row" href={"/" + props.link}>
-                <Image src={props.img} alt={""}/>
+                <Image src={props.img} alt={""} />
                 <span>{props.title}</span>
             </Link>
         </div>
