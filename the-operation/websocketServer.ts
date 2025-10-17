@@ -27,14 +27,14 @@ export const handleWebsocket = (req: Request, ollama: Ollama) => {
 		const response = await ollama.chat({
 			model: "gpt-oss:120b",
 			messages: [
-				newMessage,
-				...messages
+				...messages,
+				newMessage
 				],
 			})
 
-			messageText = response.message.content
+		messageText = response.message.content
 
-			messages = [...messages, { role: "user", content: event.data }, response.message]
+		messages = [...messages, newMessage, response.message]
 
     socket.send(messageText)
   }
