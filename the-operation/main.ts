@@ -1,6 +1,5 @@
 import { neon } from "npm:@neondatabase/serverless"
 import { load } from "jsr:@std/dotenv"
-import {  } from "npm:postgres"
 
 const env = await load({
   envPath: ".env",
