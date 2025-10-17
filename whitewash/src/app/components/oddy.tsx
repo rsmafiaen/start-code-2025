@@ -1,19 +1,29 @@
 import Image from "next/image";
 import oddy from "../assets/images/oddy.png";
+import frog from "../assets/images/frog.png";
+import styles from './Oddy.module.css'
 
 export const Oddy = ({
-  message = "Hei! Jeg er Odd Reitan, kan jeg hjelpe deg med noe?",
+  message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
 }: {
   message?: string;
 }) => {
+  let isFrog = Math.random() < 1 / 20;
+  isFrog = true;
+  const avatar = isFrog ? frog : oddy;
+  const name = isFrog ? "Froggy" : "Oddy";
+  if (isFrog) {
+    message = message.replaceAll("Oddy", "Froggy");
+  }
+
   return (
     <div className="flex items-end space-x-3">
       <Image
-        src={oddy}
-        alt="Oddy avatar"
+        src={avatar}
+        alt={`${name} avatar`}
         width={80}
         height={80}
-        className="rounded-full"
+        className={`rounded-full ${isFrog ? styles.spinSlow : ""}`}
       />
       <div className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
         {message}
