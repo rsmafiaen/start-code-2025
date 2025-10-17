@@ -11,7 +11,7 @@ const ollama = new Ollama({
 	headers: {
 		Authorization: `Bearer ${env.OLLAMA_API_KEY}`,
 	},
-});
+})
 
 const sql = neon(env.NEON_CONNECTION_STRING)
 
