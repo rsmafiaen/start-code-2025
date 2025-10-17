@@ -1,0 +1,32 @@
+# Designdokument
+
+### Får oppgitt:
+
+- pris per kilo
+- enhet
+- organisk
+- CO2
+- beholdning
+
+## IDEER:
+
+- Butikk addresse, lokasjon
+- lagerbeholdning & handlelist
+  - Kombiner disse, så du kan se hva på handleliste som er på lager/ikke.
+- Spill, higher og lower for varer.
+- Avatar: Odd Reitan
+
+## MVP:
+
+- Odd Reitan
+  - Design metafor, overordnet utformings-ide
+- Miljø bærekraft
+- Handleliste
+- Handlevaner
+  - Tilbud, høyere frekvens kjøp -> litt avslag.
+  - Mister avslag ved lite kjøp.
+- Gambling?
+  - Norsk Tipping API
+
+## Product:
+- GPT
