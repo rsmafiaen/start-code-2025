@@ -6,6 +6,7 @@ CO2
 beholdning
 
 IDEER:
+-Butikk addresse, lokasjon
 -lagerbeholdning
 -handlelist
  -> Kombiner disse, så du kan se hva på handleliste som er på lager/ikke.
