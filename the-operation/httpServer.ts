@@ -1,5 +1,5 @@
-import { NeonQueryFunction } from "npm:@neondatabase/serverless";
-import { Ollama } from "npm:ollama";
+import type { NeonQueryFunction } from "npm:@neondatabase/serverless";
+import type { Ollama } from "npm:ollama";
 
 
 export const handleHttp = async (req: Request, _env: Record<string, string>, sql: NeonQueryFunction<false, false>, ollama: Ollama) => {

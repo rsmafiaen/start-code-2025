@@ -1,11 +1,11 @@
-import { Ollama } from "npm:ollama";
+import type { Message, Ollama } from "npm:ollama";
 
 export const handleWebsocket = (req: Request, ollama: Ollama) => {
 	if (req.headers.get("upgrade") !== "websocket") {
     return new Response(null, { status: 501 })
   }
 
-	let messages: string[] = []
+	let messages: Message[] = []
   
   const { socket, response } = Deno.upgradeWebSocket(req);
   
@@ -14,25 +14,29 @@ export const handleWebsocket = (req: Request, ollama: Ollama) => {
   }
 
   socket.onmessage = async (event) => {
-		let message = ""
+		let messageText = ""
 
-		if (messages.length === 0) {
-			const response = await ollama.chat({
+		const newMessage: Message = {
+				role: "user",
+				content: messages.length === 0 ?
+					`You are Odd Reitan, CEO of Reitan Retail, one of the biggest retail companies in the nordics. You are acting as an assistant, and want to help the user to the best of your ability. The rest of this request will be in Norwegian. Please respond in Norwegian. Use plain text(no markdown) and respond fairly briefly (ca. 300 characters max). The request from the user is: ${event.data}`
+					:
+					event.data
+			}
+
+		const response = await ollama.chat({
 			model: "gpt-oss:120b",
 			messages: [
-				{
-					role: "user",
-					content: `You are Odd Reitan, CEO of Reitan Retail, one of the biggest retail companies in the nordics. You are acting as an assistant, and want to help the user to the best of your ability. The rest of this request will be in Norwegian. Please respond in Norwegian. Use plain text(no markdown) and respond fairly briefly (ca. 300 characters max). The request from the user is: ${event.data}`,
-					},
+				newMessage,
+				...messages
 				],
 			})
 
-			message = response.message.content
+			messageText = response.message.content
 
-			messages = [event.data, message]
-		}
+			messages = [...messages, { role: "user", content: event.data }, response.message]
 
-    socket.send(message)
+    socket.send(messageText)
   }
 
   socket.onerror = (error) => {
