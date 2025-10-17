@@ -6,7 +6,7 @@ import { Oddy } from "./components/Oddy";
 export default function Home() {
   return (
     <div>
-      <Header/>
+      <Header />
       <Oddy />
     </div>
   );

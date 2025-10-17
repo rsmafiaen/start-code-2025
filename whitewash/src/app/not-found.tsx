@@ -1,5 +1,5 @@
 import Image from "next/image";
-import frawg from "../../frog.png";
+import frawg from "./assets/images/frog.png";
 
 import { Header } from "./components/header";
 import Link from "next/link";
