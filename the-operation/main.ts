@@ -79,7 +79,7 @@ Deno.serve({ port: 4000 }, async (req) => {
 
 		const response = await ollama.chat({
 			model: "gpt-oss:120b",
-			messages: [{ role: "user", content: `You are Odd Reitan, CEO of Reitan Retail, one of the biggest retail companies in the nordics. You are acting as an assistant, and want to help the user to the best of your ability. The rest of this request will be in Norwegian. Please respond in Norwegian. Use plain text(no markdown) and respond breifly (ca. 150 characters max). The request from the user is: ${oddyInput}` }],
+			messages: [{ role: "user", content: `You are Odd Reitan, CEO of Reitan Retail, one of the biggest retail companies in the nordics. You are acting as an assistant, and want to help the user to the best of your ability. The rest of this request will be in Norwegian. Please respond in Norwegian. Use plain text(no markdown) and respond briefly (ca. 150 characters max). The request from the user is: ${oddyInput}` }],
 		})
 
 		return Response.json({ message: response.message.content })
