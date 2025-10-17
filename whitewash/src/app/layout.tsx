@@ -1,15 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const rema = localFont({
+  src: [
+    {
+      path: "../../public/fonts/rema/REMA-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/rema/REMA-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/rema/REMA-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/rema/REMA-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-rema",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const remaBrush = localFont({
+  src: [
+    {
+      path: "../../public/fonts/rema/REMA-Brush.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-brush",
+});
+
+const remaNumeral = localFont({
+  src: [
+    {
+      path: "../../public/fonts/rema/REMA-Numeral.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-numeral",
+});
+
+const uniform = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Uniform.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-uniform",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${rema.variable} ${remaBrush.variable} ${remaNumeral.variable} ${uniform.variable} antialiased`}
       >
         {children}
       </body>
