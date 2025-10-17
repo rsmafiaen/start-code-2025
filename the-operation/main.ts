@@ -28,6 +28,13 @@ Deno.serve({ port: 4000 }, async (req) => {
 		return Response.json(products)
 	}
 
+	if(url.pathname == "/api/froggy") {
+		
+		const products = {message : 'ribbit'}
+
+		return Response.json(products)
+	}
+
 	if(url.pathname == "/api/oddy") {
 		const params = url.searchParams
 
