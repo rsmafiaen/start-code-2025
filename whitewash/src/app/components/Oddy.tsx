@@ -25,7 +25,7 @@ export const Oddy = ({
   }, [])
 
   return (
-    <div className="flex items-end space-x-3">
+    <div className="flex flex-col absolute right-0 bottom-10 items-end space-x-3 z-50">
       <Image
         src={avatar}
         alt={`${name} avatar`}
@@ -36,6 +36,9 @@ export const Oddy = ({
       <div className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
         {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
         <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
+      </div>
+      <div className="flex-3 max-w-[350px]">
+          <input name="chatInput" className="bg-white w-full rounded text-black p-3 placeholder-gray-600" placeholder="Query ODDY THE GREAT" />
       </div>
     </div>
   );

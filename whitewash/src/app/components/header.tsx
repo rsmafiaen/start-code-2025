@@ -13,6 +13,7 @@ export function Header() {
             <Link href="/">
                 <Image src={logo} alt={"REMA 1000"} />
             </Link> 
+            
 
             <div className="flex-3 flex flex-row items-center justify-evenly text-white">
                 <HeaderItem img={dinner} link="oppskrifter" title="Oppskrifter" />
@@ -24,8 +25,10 @@ export function Header() {
             <div className="flex-3 max-w-[350px]">
                 <input name="search" className="bg-white w-full rounded text-black p-3 placeholder-gray-600" placeholder="Søk på rema.no" />
             </div>
+            
 
             <Link href="/handleliste">Handleliste</Link>
+            
         </div>
     )
 }
