@@ -1,6 +1,6 @@
 
 import { Header } from "./components/header";
-import { Oddy } from "./components/Oddy";
+import { Oddy } from "./components/OddyPopup";
 
 export default function Home() {
   return (
