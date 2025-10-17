@@ -16,7 +16,7 @@ Deno.serve({ port: 4000 }, async (req) => {
 
 		const search = params.get("search")
 
-		const products = await sql.query("SELECT * FROM products WHERE name ILIKE $1", [`%${search}%`])
+		const products = await sql.query("SELECT * FROM products WHERE name ILIKE $1", [`%${search === null ? "" : search}%`])
 
 		return Response.json(products)
 	}
