@@ -13,3 +13,21 @@ IDEER:
 -Spill, higher og lower for varer.
 -Avatar: Odd Reitan
 
+
+
+MVP:
+-Odd Reitan
+    -> Design metafor, overordnet utformings-ide
+-Miljø bærekraft
+-Handleliste
+-Handlevaner
+    -> 
+-Tilbud, høyere frekvens kjøp -> litt avslag.
+    -> Mister avslag ved lite kjøp.
+-Gambling 
+    -> Norsk Tipping API
+
+
+MaxVP:
+-GPT
+
