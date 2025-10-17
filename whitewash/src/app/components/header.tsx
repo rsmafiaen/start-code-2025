@@ -1,9 +1,9 @@
 import Image from "next/image";
-import logo from "../../public/header-icons/logo-slogan.svg";
-import dinner from "../../public/header-icons/dinner.svg";
-import sale from "../../public/header-icons/sale.svg";
-import gps from "../../public/header-icons/gps.svg";
-import globe from "../../public/header-icons/globe.svg";
+import logo from "@public/header-icons/logo-slogan.svg";
+import dinner from "@public/header-icons/dinner.svg";
+import sale from "@public/header-icons/sale.svg";
+import gps from "@public/header-icons/gps.svg";
+import globe from "@public/header-icons/globe.svg";
 import { HeaderItem } from "./headerItem";
 import Link from "next/link";
 
