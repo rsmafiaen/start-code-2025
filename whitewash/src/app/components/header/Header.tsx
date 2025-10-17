@@ -1,13 +1,19 @@
-import Image from "next/image"
-import logo from "@public/header-icons/logo-slogan.svg"
-import dinner from "@public/header-icons/dinner.svg"
-import sale from "@public/header-icons/sale.svg"
-import gps from "@public/header-icons/gps.svg"
-import globe from "@public/header-icons/globe.svg"
-import { HeaderItem } from "./headerItem"
-import Link from "next/link"
+"use client";
 
-export function Header() {
+import Image from "next/image";
+import logo from "@public/header-icons/logo-slogan.svg";
+import dinner from "@public/header-icons/dinner.svg";
+import sale from "@public/header-icons/sale.svg";
+import gps from "@public/header-icons/gps.svg";
+import globe from "@public/header-icons/globe.svg";
+import { HeaderItem } from "./HeaderItem";
+import Link from "next/link";
+import { useState } from "react";
+import { ShoppingCartModal } from "./ShoppingCartModal";
+
+export const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="h-[100px] bg-[#023ea5] flex flex-row items-center justify-evenly px-5 text-white gap-5">
       <Link href="/">
@@ -28,8 +34,10 @@ export function Header() {
           placeholder="Søk på rema.no"
         />
       </div>
-
-      <Link href="/handleliste">Handleliste</Link>
+      <div>
+        <span onClick={() => setOpen(!open)} className="cursor-pointer">Handleliste</span>
+      </div>
+      {open && <ShoppingCartModal />}
     </div>
-  )
-}
+  );
+};

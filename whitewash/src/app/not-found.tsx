@@ -1,8 +1,8 @@
-import Image from "next/image"
-import frawg from "@/assets/images/frog.png"
+import Image from "next/image";
+import frawg from "@/assets/images/frog.png";
 
-import { Header } from "@/components/header/header"
-import Link from "next/link"
+import { Header } from "@/components/header/Header";
+import Link from "next/link";
 
 export default function HeaderPage() {
   return (
@@ -15,5 +15,5 @@ export default function HeaderPage() {
         </Link>
       </div>
     </div>
-  )
+  );
 }
