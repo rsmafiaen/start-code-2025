@@ -1,15 +1,14 @@
 import Image from "next/image";
 import oddy from "../assets/images/oddy.png";
 import frog from "../assets/images/frog.png";
-import styles from './Oddy.module.css'
+import styles from "./Oddy.module.css";
 
 export const Oddy = ({
   message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
 }: {
   message?: string;
 }) => {
-  let isFrog = Math.random() < 1 / 20;
-  isFrog = true;
+  const isFrog = Math.random() < 1 / 20;
   const avatar = isFrog ? frog : oddy;
   const name = isFrog ? "Froggy" : "Oddy";
   if (isFrog) {
