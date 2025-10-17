@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "dev": "deno run --allow-all --watch main.ts",
     "migrate": "deno run scripts/add_products_to_db.ts"
   },
   "imports": {
