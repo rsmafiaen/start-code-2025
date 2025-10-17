@@ -5,11 +5,14 @@ import sale from "../../public/header-icons/sale.svg";
 import gps from "../../public/header-icons/gps.svg";
 import globe from "../../public/header-icons/globe.svg";
 import { HeaderItem } from "./headerItem";
+import Link from "next/link";
 
 export function Header() {
     return (
         <div className="h-[100px] bg-[#023ea5] flex flex-row items-center justify-evenly px-5 text-white gap-5">
-            <Image src={logo} alt={"REMA 1000"}/>
+            <Link href="/">
+                <Image src={logo} alt={"REMA 1000"}/>
+            </Link>
 
             <div className="flex-3 flex flex-row items-center justify-evenly text-white">
                 <HeaderItem img={dinner} link="oppskrifter" title="Oppskrifter"/>

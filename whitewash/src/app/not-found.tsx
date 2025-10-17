@@ -1,7 +1,8 @@
 import Image from "next/image";
-import frawg from "../../../frog.png";
+import frawg from "../../frog.png";
 
-import { Header } from "../../components/header";
+import { Header } from "../components/header";
+import Link from "next/link";
 
 
 export default function HeaderPage() {
@@ -12,7 +13,9 @@ export default function HeaderPage() {
             <span className="text-black">
             Ikke noe å se her.
             </span>
-            <Image src={frawg} alt="frog" height='300'/>
+            <Link href="/">
+              <Image src={frawg} alt="frog" height='300'/>
+            </Link>
         </div>
     </div>
   );
