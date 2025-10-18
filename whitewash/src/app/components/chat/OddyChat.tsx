@@ -38,8 +38,6 @@ export const OddyChat = () => {
     ws.current?.send(input)
 
     setInput("")
-
-    console.log(oddyMessages)
   }
 
   return (
