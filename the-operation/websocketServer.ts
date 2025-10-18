@@ -18,11 +18,8 @@ export const handleWebsocket = (req: Request, ollama: Ollama) => {
 		agent === "froggy"
 			? FROGGY_INITIAL_PROMPT + (isPride ? PRIDE_EXTENSION : "")
 			: ODDY_INITIAL_PROMPT
-	
-	const model =
-		agent === "froggy"
-			? "gpt-oss:20b"
-			: "gpt-oss:120b"
+
+	const model = agent === "froggy" ? "gpt-oss:20b" : "gpt-oss:120b"
 
 	let messages: Message[] = []
 
