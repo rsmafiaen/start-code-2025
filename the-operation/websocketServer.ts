@@ -1,5 +1,9 @@
 import type { Message, Ollama } from "npm:ollama"
-import { ODDY_INITIAL_PROMPT, FROGGY_INITIAL_PROMPT, PRIDE_EXTENSION } from "./main.ts"
+import {
+	ODDY_INITIAL_PROMPT,
+	FROGGY_INITIAL_PROMPT,
+	PRIDE_EXTENSION,
+} from "./main.ts"
 
 export const handleWebsocket = (req: Request, ollama: Ollama) => {
 	if (req.headers.get("upgrade") !== "websocket") {
