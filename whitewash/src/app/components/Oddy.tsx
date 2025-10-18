@@ -5,6 +5,9 @@ import oddy from "../assets/images/oddy.png";
 import frog from "../assets/images/frog.png";
 import styles from "./Oddy.module.css";
 import { useEffect, useState } from "react";
+import * as React from 'react';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 export const Oddy = ({
   message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
@@ -24,22 +27,52 @@ export const Oddy = ({
     }
   }, [])
 
+const [anchorEl, setAnchorEl] =   React.useState<HTMLButtonElement | null>(null);
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  setAnchorEl(event.currentTarget);
+  
+}
+const handleClose = () => {
+  setAnchorEl(null)
+}
+const open = Boolean(anchorEl);
+
   return (
-    <div className="flex flex-col absolute right-0 bottom-10 items-end space-x-3 z-50">
-      <Image
-        src={avatar}
-        alt={`${name} avatar`}
-        width={80}
-        height={80}
-        className={`rounded-full ${isFrog ? styles.spinSlow : ""}`}
-      />
-      <div className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
-        {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
-        <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
-      </div>
-      <div className="flex-3 max-w-[350px]">
-          <input name="chatInput" className="bg-white w-full rounded text-black p-3 placeholder-gray-600" placeholder="Query ODDY THE GREAT" />
+    <div>
+      <div  id="chat-container" className="flex flex-col items-end space-x-3 z-
+        +50">
+          <Image
+            src={avatar}
+            alt={`${name} avatar`}
+            width={80}
+            height={80}
+            className={`rounded-full ${isFrog ? styles.spinSlow : ""}`}
+          />
+          <ul id= "message-list">
+            <li>
+              <div id = "oddy" className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
+                {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
+                <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
+              </div>
+            </li>
+          </ul>
+        <div id="input" className="flex-3 max-w-[350px]">
+              <button id="chat-input" onClick ={handleClick} type="button" className="bg-white w-full rounded text-black p-3 placeholder-gray-600">Ask Oddy</button>
+              <Popover
+                id="chat"
+                open ={open}  
+                onClose={handleClose}              
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+              >
+                <Typography sx={{ p: 2 }}>Bruh momento.</Typography>
+              </Popover>
+        </div>
       </div>
     </div>
   );
 };
+
+
