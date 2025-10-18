@@ -5,27 +5,33 @@ import { useEffect, useRef, useState } from "react"
 import { useStateArray } from "@/hooks/useStateArray"
 
 export const OddyChat = () => {
-	const [oddyMessages, addOddyMessage] = useStateArray<{ role: "user" | "oddy", message: string }>([])
-	const [input, setInput] = useState("")
-	const ws = useRef<WebSocket | null>(null)
+  const [oddyMessages, addOddyMessage] = useStateArray<{
+    role: "user" | "oddy"
+    message: string
+  }>([])
+  const [input, setInput] = useState("")
+  const ws = useRef<WebSocket | null>(null)
 
   useEffect(() => {
     ws.current = new WebSocket("ws://localhost:4001")
 
     ws.current.onopen = () => console.log("✅ Connected to WebSocket")
-    ws.current.onmessage = (event) => event.data === "Successfully connected" ? null : addOddyMessage({role: "oddy", message: event.data})
+    ws.current.onmessage = (event) =>
+      event.data === "Successfully connected"
+        ? null
+        : addOddyMessage({ role: "oddy", message: event.data })
     ws.current.onerror = (err) => console.error("❌ WebSocket error:", err)
     ws.current.onclose = () => console.log("🔌 WebSocket closed")
 
     return () => {
       ws.current?.close()
     }
-  }, [])
+  }, [addOddyMessage])
 
-	const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!input.trim()) return
-    const msg: typeof oddyMessages[0] = { role: "user", message: input }
+    const msg: (typeof oddyMessages)[0] = { role: "user", message: input }
 
     addOddyMessage(msg)
 
@@ -35,11 +41,10 @@ export const OddyChat = () => {
 
     console.log(oddyMessages)
   }
-	
 
-	return (
-		<div>
-			<form onSubmit={handleSubmit} className="flex gap-2">
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           className="border rounded p-2 flex-1"
           value={input}
@@ -54,9 +59,13 @@ export const OddyChat = () => {
         </button>
       </form>
 
-			{oddyMessages.map((message) => (<div key={message.message} className="flex w-full flex-col">
-				<p className={message.role === "oddy" ? "self-start" : "self-end"}>{message.message}</p>
-			</div>))}
-		</div>
-	)
+      {oddyMessages.map((message) => (
+        <div key={message.message} className="flex w-full flex-col">
+          <p className={message.role === "oddy" ? "self-start" : "self-end"}>
+            {message.message}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
 }

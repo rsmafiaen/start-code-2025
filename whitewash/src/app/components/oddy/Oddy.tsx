@@ -8,7 +8,6 @@ import * as React from "react"
 import Popover from "@mui/material/Popover"
 import Typography from "@mui/material/Typography"
 import { useEffect, useState } from "react"
-import { eventNames } from "process"
 
 export const Oddy = ({
   message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
@@ -26,12 +25,11 @@ export const Oddy = ({
       setAvatar(frog)
       setName("Froggy")
     }
-  }, []) 
+  }, [])
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
-    if(isFrog){
-      
+    if (isFrog) {
     }
   }
   const handleClose = () => {
@@ -82,7 +80,6 @@ export const Oddy = ({
               <Typography sx={{ p: 2 }}>Bruh momento.</Typography>
             </Popover>
           </div>
-
         </div>
       </div>
     </div>
