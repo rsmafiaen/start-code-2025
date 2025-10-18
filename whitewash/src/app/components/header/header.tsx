@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import logo from "@public/header-icons/logo-slogan.svg"
 import dinner from "@public/header-icons/dinner.svg"
@@ -6,8 +7,16 @@ import gps from "@public/header-icons/gps.svg"
 import globe from "@public/header-icons/globe.svg"
 import { HeaderItem } from "./headerItem"
 import Link from "next/link"
+import { useState } from "react"
+
 
 export function Header() {
+  const [searchInput, setSearchInput] = useState('');
+
+  function handleSearch() {
+    console.log(searchInput)
+  }
+
   return (
     <div className="h-22.5 bg-rema-blue flex flex-row items-center justify-evenly px-5 text-white gap-5">
       <Link href="/">
@@ -25,10 +34,12 @@ export function Header() {
         <input
           name="search"
           type="text"
+          value={searchInput}
+          onChange={e => setSearchInput(e.target.value)}
           className="bg-white w-full rounded text-black p-3 placeholder-gray-600"
           placeholder="Søk på rema.no"
         />
-        <button type="button" className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded">Søk</button>
+        <button type="button" onClick={handleSearch} className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded">Søk</button>
       </div>
 
       <Link className="font-bold" href="/handleliste">Handleliste</Link>
