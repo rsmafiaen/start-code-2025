@@ -68,7 +68,7 @@ export const Oddy = ({
 								isPride ? "Pride Froggy 🏳️‍🌈" : "Froggy"
 						  )
 						: message}
-					<div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
+					<div className="absolute top-[-8px] right-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-gray-200" />
 				</div>
 			</div>
 
