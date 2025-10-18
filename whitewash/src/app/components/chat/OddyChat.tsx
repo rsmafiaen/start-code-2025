@@ -1,5 +1,6 @@
 "use client"
 
+import { useStateArray } from "@/hooks/useStateArray"
 import { useEffect, useRef, useState } from "react"
 
 type ChatMsg = {
@@ -9,7 +10,7 @@ type ChatMsg = {
 }
 
 export const OddyChat = () => {
-	const [messages, setMessages] = useState<ChatMsg[]>([])
+	const [messages, addMessage] = useStateArray<ChatMsg>([])
 	const [input, setInput] = useState("")
 	const [agent, setAgent] = useState<"oddy" | "froggy">("froggy")
 	const [isPride, setIsPride] = useState(false)
@@ -25,15 +26,11 @@ export const OddyChat = () => {
 
 		ws.current.onopen = () => {
 			console.log("✅ Connected to WebSocket")
-			setMessages([])
 		}
 
 		ws.current.onmessage = (event) => {
 			if (event.data === "Successfully connected") return
-			setMessages((m) => [
-				...m,
-				{ id: crypto.randomUUID(), role: "oddy", message: String(event.data) },
-			])
+			addMessage({ id: crypto.randomUUID(), role: "oddy", message: String(event.data) })
 		}
 
 		ws.current.onerror = (err) => console.error("❌ WebSocket error:", err)
@@ -42,7 +39,7 @@ export const OddyChat = () => {
 		return () => {
 			ws.current?.close()
 		}
-	}, [agent, isPride])
+	}, [agent, isPride, addMessage])
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -50,7 +47,7 @@ export const OddyChat = () => {
 		if (!trimmed) return
 
 		const msg: ChatMsg = { id: crypto.randomUUID(), role: "user", message: trimmed }
-		setMessages((m) => [...m, msg])
+		addMessage(msg)
 		ws.current?.send(trimmed)
 		setInput("")
 	}
