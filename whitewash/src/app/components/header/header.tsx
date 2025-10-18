@@ -42,11 +42,19 @@ export function Header() {
           onChange={e => setSearchInput(e.target.value)}
           className="bg-white w-full rounded text-black p-3 placeholder-gray-600"
           placeholder="Søk på rema.no"
-          />
-        <button type="button" onClick={handleSearch} className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded">Søk</button>
+           />
+        <button
+          type="button"
+          onClick={handleSearch}
+          className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded"
+        >
+          Søk
+        </button>
       </form>
 
-      <Link className="font-bold" href="/handleliste">Handleliste</Link>
+      <Link className="font-bold" href="/handleliste">
+        Handleliste
+      </Link>
     </div>
   )
 }
