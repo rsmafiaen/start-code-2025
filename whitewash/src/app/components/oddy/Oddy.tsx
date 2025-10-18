@@ -24,7 +24,7 @@ export const Oddy = ({
     const shouldBeFrog = Math.random() < 1 / 20
     setIsFrog(shouldBeFrog)
     if (shouldBeFrog) {
-      const shouldBePride = Math.random() < 1 / 1
+      const shouldBePride = Math.random() < 1 / 10
       setIsPride(shouldBePride)
       setAvatar(shouldBePride ? prideFrog : frog)
       setName("Froggy")
