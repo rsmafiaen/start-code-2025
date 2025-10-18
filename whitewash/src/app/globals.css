@@ -42,32 +42,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-rema), Arial, Helvetica, sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-uniform), Arial, Helvetica, sans-serif;
   color: var(--rema-blue);
-}
-
-@font-face {
-    font-family: "REMA Ikonfont";
-    src:url('../../fonts/rema/icon/rema-ikonfont.eot');
-    src:url('../../fonts/rema/icon/rema-ikonfont.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/rema/icon/rema-ikonfont.woff') format('woff'),
-        url('../../fonts/rema/icon/rema-ikonfont.ttf') format('truetype'),
-        url('../../fonts/rema/icon/rema-ikonfont.svg#rema') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-.rema-ikonfont [class^="icon-"], .rema-ikonfont [class*="icon-"] {
-    font-family: "REMA Ikonfont";
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-alarm:before { content: "\53"; }
