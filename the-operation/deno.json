@@ -2,7 +2,8 @@
 	"tasks": {
 		"dev": "deno run --allow-all --watch main.ts",
 		"migrate": "deno run scripts/add_products_to_db.ts",
-		"lint": "deno run -A npm:@biomejs/biome lint --write --unsafe"
+		"lint": "deno run -A npm:@biomejs/biome format --write && deno run -A npm:@biomejs/biome lint --write --unsafe",
+		"lint-check": "deno run -A npm:@biomejs/biome format && deno run -A npm:@biomejs/biome lint"
 	},
 	"imports": {
 		"@biomejs/biome": "npm:@biomejs/biome@^2.2.6",
