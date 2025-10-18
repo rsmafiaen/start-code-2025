@@ -13,11 +13,12 @@ import { useState } from "react"
 export function Header() {
   const [searchInput, setSearchInput] = useState('');
 
-  function handleSearch() {
+  const handleSearch = (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
     if (searchInput.length > 0){
-      window.location.href="/?search=" + searchInput;
-    }
-  }
+      window.location.href=`/search?a=${searchInput}`;
+    };
+  };
 
   return (
     <div className="h-22.5 bg-rema-blue flex flex-row items-center justify-evenly px-5 text-white gap-5">
@@ -32,7 +33,8 @@ export function Header() {
         <HeaderItem img={globe} link="ansvar" title="Vårt ansvar" />
       </div>
 
-      <div className="flex-3 flex flex-row max-w-100 items-center">
+      <form onSubmit={handleSearch} className="flex-3 flex flex-row max-w-100 items-center">
+
         <input
           name="search"
           type="text"
@@ -40,9 +42,9 @@ export function Header() {
           onChange={e => setSearchInput(e.target.value)}
           className="bg-white w-full rounded text-black p-3 placeholder-gray-600"
           placeholder="Søk på rema.no"
-        />
+          />
         <button type="button" onClick={handleSearch} className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded">Søk</button>
-      </div>
+      </form>
 
       <Link className="font-bold" href="/handleliste">Handleliste</Link>
     </div>
