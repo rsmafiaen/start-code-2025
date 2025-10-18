@@ -50,6 +50,17 @@ const remaNumeral = localFont({
   variable: "--font-numeral",
 })
 
+const remaIcon = localFont({
+  src: [
+    {
+      path: "../../public/fonts/rema/REMA-Ikon.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-rema-icons",
+})
+
 const uniform = localFont({
   src: [
     {
@@ -74,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rema.variable} ${remaBrush.variable} ${remaNumeral.variable} ${uniform.variable} antialiased`}
+        className={`${rema.variable} ${remaBrush.variable} ${remaNumeral.variable} ${uniform.variable} ${remaIcon.variable} antialiased`}
       >
         {children}
       </body>
