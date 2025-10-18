@@ -8,6 +8,7 @@ import * as React from "react"
 import Popover from "@mui/material/Popover"
 import Typography from "@mui/material/Typography"
 import { useEffect, useState } from "react"
+import { eventNames } from "process"
 
 export const Oddy = ({
   message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
@@ -29,6 +30,9 @@ export const Oddy = ({
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
+    if(isFrog){
+      
+    }
   }
   const handleClose = () => {
     setAnchorEl(null)
@@ -49,33 +53,36 @@ export const Oddy = ({
           height={80}
           className={`rounded-full ${isFrog ? styles.spinSlow : ""}`}
         />
-        <div
-          id="oddy"
-          className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow"
-        >
-          {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
-          <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
-        </div>
-        <div id="input" className="flex-3 max-w-[350px]">
-          <button
-            id="open-chat-button"
-            onClick={handleClick}
-            type="button"
-            className="bg-white w-full rounded text-black p-3 placeholder-gray-600"
-          >
-            Ask {name}
-          </button>
-          <Popover
-            id="chat"
-            open={open}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-          >
-            <Typography sx={{ p: 2 }}>Bruh momento.</Typography>
-          </Popover>
+        <div>
+          <div id="oddy_container" className="relative px-4 py-3 rounded-lg ">
+            <div
+              id="oddy_pic"
+              className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow"
+            >
+              {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
+              <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
+            </div>
+            <button
+              id="open-chat-button"
+              onClick={handleClick}
+              type="button"
+              className="bg-white w-full rounded text-black p-3 placeholder-gray-600 mt-6"
+            >
+              Ask {name}
+            </button>
+            <Popover
+              className="mt-6"
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+            >
+              <Typography sx={{ p: 2 }}>Bruh momento.</Typography>
+            </Popover>
+          </div>
+
         </div>
       </div>
     </div>
