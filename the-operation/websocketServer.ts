@@ -18,6 +18,11 @@ export const handleWebsocket = (req: Request, ollama: Ollama) => {
 		agent === "froggy"
 			? FROGGY_INITIAL_PROMPT + (isPride ? PRIDE_EXTENSION : "")
 			: ODDY_INITIAL_PROMPT
+	
+	const model =
+		agent === "froggy"
+			? "gpt-oss:20b"
+			: "gpt-oss:120b"
 
 	let messages: Message[] = []
 
@@ -28,28 +33,23 @@ export const handleWebsocket = (req: Request, ollama: Ollama) => {
 	}
 
 	socket.onmessage = async (event) => {
-		try {
-			const userText = String(event.data ?? "")
-			const newMessage: Message = {
-				role: "user",
-				content:
-					messages.length === 0
-						? `${basePrompt} The first request from the user is: ${userText}`
-						: userText,
-			}
-
-			const chat = await ollama.chat({
-				model: "gpt-oss:120b",
-				messages: [...messages, newMessage],
-			})
-
-			const botMsg = chat.message
-			messages = [...messages, newMessage, botMsg]
-			socket.send(botMsg.content ?? "")
-		} catch (err) {
-			console.error("WebSocket handler error:", err)
-			socket.send("Beklager, noe gikk galt.")
+		const userText = event.data
+		const newMessage: Message = {
+			role: "user",
+			content:
+				messages.length === 0
+					? `${basePrompt} The first request from the user is: ${userText}`
+					: userText,
 		}
+
+		const chat = await ollama.chat({
+			model: model,
+			messages: [...messages, newMessage],
+		})
+
+		const botMsg = chat.message
+		messages = [...messages, newMessage, botMsg]
+		socket.send(botMsg.content ?? "")
 	}
 
 	socket.onerror = (error) => {
