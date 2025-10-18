@@ -14,7 +14,9 @@ export function Header() {
   const [searchInput, setSearchInput] = useState('');
 
   function handleSearch() {
-    console.log(searchInput)
+    if (searchInput.length > 0){
+      window.location.href="/?search=" + searchInput;
+    }
   }
 
   return (
