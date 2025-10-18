@@ -1,5 +1,5 @@
-import { Header } from "@/components/header/header"
-import { Oddy } from "@/components/oddy/Oddy"
+import { Header } from "@/components/header/Header";
+import { Oddy } from "@/components/oddy/Oddy";
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Header />
       <Oddy />
     </div>
-  )
+  );
 }

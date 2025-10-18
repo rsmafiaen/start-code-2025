@@ -1,13 +1,19 @@
-import Image from "next/image"
-import logo from "@public/header-icons/logo-slogan.svg"
-import dinner from "@public/header-icons/dinner.svg"
-import sale from "@public/header-icons/sale.svg"
-import gps from "@public/header-icons/gps.svg"
-import globe from "@public/header-icons/globe.svg"
-import { HeaderItem } from "./headerItem"
-import Link from "next/link"
+"use client";
 
-export function Header() {
+import Image from "next/image";
+import logo from "@public/header-icons/logo-slogan.svg";
+import dinner from "@public/header-icons/dinner.svg";
+import sale from "@public/header-icons/sale.svg";
+import gps from "@public/header-icons/gps.svg";
+import globe from "@public/header-icons/globe.svg";
+import { HeaderItem } from "./HeaderItem";
+import Link from "next/link";
+import { useState } from "react";
+import { ShoppingCartModal } from "./ShoppingCartModal";
+
+export const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="h-22.5 bg-rema-blue flex flex-row items-center justify-evenly px-5 text-white gap-5">
       <Link href="/">
@@ -30,8 +36,10 @@ export function Header() {
         />
         <button type="button" className="bg-rema-blue px-4 py-2 relative h-fit -ml-16 z-3 rounded">Søk</button>
       </div>
-
-      <Link className="font-bold" href="/handleliste">Handleliste</Link>
+      <div>
+        <span onClick={() => setOpen(!open)} className="cursor-pointer">Handleliste</span>
+      </div>
+      {open && <ShoppingCartModal />}
     </div>
-  )
-}
+  );
+};
