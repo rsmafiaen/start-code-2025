@@ -8,17 +8,10 @@
 }
 
 .chat-container{
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     display: flex;
-    flex-direction: row-reverse;
-    height: 70vh;
-    overflow: hidden;
-    position: relative;
-
+    justify-content: center;
+    align-items: center; 
+    height: 100vh
 }
 
 .oddy{
@@ -26,9 +19,19 @@
   left: 0;
 }
 
-.input{
+.input{ /* contains openchatbutton and chat*/
+
+}
+
+.open-chat-button{
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
+
+.chat{
+  width: 200px;
+  margin: 0 auto;
+}
+/* css er noldus */

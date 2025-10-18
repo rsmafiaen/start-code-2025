@@ -48,16 +48,12 @@ const open = Boolean(anchorEl);
             height={80}
             className={`rounded-full ${isFrog ? styles.spinSlow : ""}`}
           />
-          <ul id= "message-list">
-            <li>
-              <div id = "oddy" className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
-                {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
-                <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
-              </div>
-            </li>
-          </ul>
+        <div id = "oddy" className="relative bg-gray-200 px-4 py-3 rounded-lg text-gray-900 shadow">
+          {isFrog ? message.replace(/\bOddy\b/g, "Froggy") : message}
+          <div className="absolute -left-2 bottom-3 w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-gray-200" />
+        </div>
         <div id="input" className="flex-3 max-w-[350px]">
-              <button id="chat-input" onClick ={handleClick} type="button" className="bg-white w-full rounded text-black p-3 placeholder-gray-600">Ask Oddy</button>
+            <button id="open-chat-button" onClick ={handleClick} type="button" className="bg-white w-full rounded text-black p-3 placeholder-gray-600">Ask Oddy</button>
               <Popover
                 id="chat"
                 open ={open}  
