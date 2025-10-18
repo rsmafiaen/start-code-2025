@@ -23,7 +23,7 @@ export function Header() {
         <Image src={logo} alt={"REMA 1000"} />
       </Link>
 
-      <div className="flex-3 flex flex-row items-center justify-evenly text-white font-bold">
+      <div className="flex-3 hidden flex-row items-center justify-evenly text-white font-bold lg:flex">
         <HeaderItem img={dinner} link="oppskrifter" title="Oppskrifter" />
         <HeaderItem img={sale} link="tilbud" title="Tilbud og kampanjer" />
         <HeaderItem img={gps} link="butikker" title="Butikker" />
