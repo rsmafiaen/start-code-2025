@@ -1,36 +1,40 @@
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spinSlow {
   animation: spin 3s linear infinite;
 }
 
-.chat-container{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100vh
+.chat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.oddy{
+.oddy {
   position: absolute;
   left: 0;
 }
 
-.input{ /* contains openchatbutton and chat*/
-
+.input {
+  /* contains openchatbutton and chat*/
 }
 
-.open-chat-button{
+.open-chat-button {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.chat{
+.chat {
   width: 200px;
   margin: 0 auto;
 }
