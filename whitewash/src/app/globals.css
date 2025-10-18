@@ -3,12 +3,27 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --rema-blue: #023ea5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  
+  --color-rema-blue: #023ea5;
+  --color-rema-red: #d71f2e;
+  
+  --color-rema-secondary-lightblue: #bfdfff;
+  --color-rema-secondary-darkblue: #002855;
+  --color-rema-secondary-blue: #7eb4ff;
+  --color-rema-secondary-lightgray: #fbf8f4;
+  
+  --color-rema-supporting-lightred: #fea59c;
+  --color-rema-supporting-lightyellow: #fff1b4;
+  --color-rema-supporting-lightgreen: #bfce9b;
+  --color-rema-supporting-darkgreen: #06402e;
+  --color-rema-supporting-orange: #eea272;
+  --color-rema-supporting-violet: #cea0d4;
+
   --font-rema: var(--font-rema);
   --font-numeral: var(--font-numeral);
   --font-brush: var(--font-brush);
@@ -26,4 +41,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-rema), Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-uniform), Arial, Helvetica, sans-serif;
+  color: var(--rema-blue);
 }

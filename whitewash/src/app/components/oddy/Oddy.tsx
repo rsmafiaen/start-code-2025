@@ -4,24 +4,24 @@ import Image from "next/image";
 import oddy from "../assets/images/oddy.png";
 import frog from "../assets/images/frog.png";
 import styles from "./Oddy.module.css";
-import { useEffect, useState } from "react";
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import { useEffect, useState } from "react"
 
 export const Oddy = ({
   message = "Hei! Jeg er Oddy, kan jeg hjelpe deg med noe?",
 }: {
-  message?: string;
+  message?: string
 }) => {
   const [isFrog, setIsFrog] = useState<boolean>(false)
   const [avatar, setAvatar] = useState<typeof frog | typeof oddy>(oddy)
   const [name, setName] = useState<"Froggy" | "Oddy">("Oddy")
-  
+
   useEffect(() => {
     const shouldBeFrog = Math.random() < 1 / 20
     setIsFrog(shouldBeFrog)
-    if(shouldBeFrog) {
+    if (shouldBeFrog) {
       setAvatar(frog)
       setName("Froggy")
     }
