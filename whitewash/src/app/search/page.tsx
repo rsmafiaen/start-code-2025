@@ -39,7 +39,7 @@ export default function SearchPage(){
         };
         fetchData();
 
-    }, []);
+    }, [search]);
     
 
     return(

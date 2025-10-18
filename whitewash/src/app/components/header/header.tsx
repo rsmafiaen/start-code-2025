@@ -7,13 +7,13 @@ import gps from "@public/header-icons/gps.svg"
 import globe from "@public/header-icons/globe.svg"
 import { HeaderItem } from "./headerItem"
 import Link from "next/link"
-import { useState } from "react"
+import { type FormEvent, useState } from "react"
 
 
 export function Header() {
   const [searchInput, setSearchInput] = useState('');
 
-  const handleSearch = (e: React.ChangeEvent<any>) => {
+  const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     if (searchInput.length > 0){
       window.location.href=`/search?a=${searchInput}`;
