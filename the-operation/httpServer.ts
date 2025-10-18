@@ -3,12 +3,12 @@ import type { Ollama } from "npm:ollama"
 import { ODDY_INITIAL_PROMPT } from "./main.ts"
 
 var options = {
-    headers: {
-        "Access-Control-Request-Headers": "*",
-        "Access-Control-Request-Method": "*",
+	headers: {
+		"Access-Control-Request-Headers": "*",
+		"Access-Control-Request-Method": "*",
 		"Access-Control-Allow-Origin": "*",
-    },
-  }
+	},
+}
 
 export const handleHttp = async (
 	req: Request,
