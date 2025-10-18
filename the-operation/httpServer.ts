@@ -2,6 +2,14 @@ import type { NeonQueryFunction } from "npm:@neondatabase/serverless"
 import type { Ollama } from "npm:ollama"
 import { ODDY_INITIAL_PROMPT } from "./main.ts"
 
+var options = {
+	headers: {
+		"Access-Control-Request-Headers": "*",
+		"Access-Control-Request-Method": "*",
+		"Access-Control-Allow-Origin": "*",
+	},
+}
+
 export const handleHttp = async (
 	req: Request,
 	_env: Record<string, string>,
@@ -20,13 +28,13 @@ export const handleHttp = async (
 			[`%${search === null ? "" : search}%`],
 		)
 
-		return Response.json(products)
+		return Response.json(products, options)
 	}
 
 	if (url.pathname === "/api/froggy") {
 		const products = { message: "ribbit" }
 
-		return Response.json(products)
+		return Response.json(products, options)
 	}
 
 	if (url.pathname === "/api/oddy") {
@@ -72,7 +80,7 @@ export const handleHttp = async (
 										CEO, Reitan Retail
 										// `.replaceAll("\t", ""),
 				},
-				{ status: 418 },
+				{ ...options, status: 418 },
 			)
 		}
 
@@ -86,8 +94,8 @@ export const handleHttp = async (
 			],
 		})
 
-		return Response.json({ message: response.message.content })
+		return Response.json({ message: response.message.content }, options)
 	}
 
-	return new Response(url.pathname)
+	return new Response(url.pathname, options)
 }
