@@ -1,8 +1,8 @@
 import { neon } from "npm:@neondatabase/serverless"
 import { load } from "jsr:@std/dotenv"
 import { Ollama } from "npm:ollama"
-import { handleHttp } from "./httpServer.ts";
-import { handleWebsocket } from "./websocketServer.ts";
+import { handleHttp } from "./httpServer.ts"
+import { handleWebsocket } from "./websocketServer.ts"
 
 const env = await load({
 	envPath: ".env",

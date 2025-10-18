@@ -1,8 +1,12 @@
-import type { NeonQueryFunction } from "npm:@neondatabase/serverless";
-import type { Ollama } from "npm:ollama";
+import type { NeonQueryFunction } from "npm:@neondatabase/serverless"
+import type { Ollama } from "npm:ollama"
 
-
-export const handleHttp = async (req: Request, _env: Record<string, string>, sql: NeonQueryFunction<false, false>, ollama: Ollama) => {
+export const handleHttp = async (
+	req: Request,
+	_env: Record<string, string>,
+	sql: NeonQueryFunction<false, false>,
+	ollama: Ollama,
+) => {
 	const url = new URL(req.url)
 
 	if (url.pathname === "/api/findProducts") {
