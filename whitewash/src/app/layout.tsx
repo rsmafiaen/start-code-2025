@@ -59,7 +59,7 @@ const remaIcon = localFont({
     },
   ],
   variable: "--font-rema-icons",
-});
+})
 
 const uniform = localFont({
   src: [
