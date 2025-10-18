@@ -2,16 +2,19 @@
 
 import { useEffect, useRef, useState } from "react"
 
-type Role = "user" | "oddy"
+type ChatMsg = {
+	id: string
+	role: "user" | "oddy"
+	message: string
+}
 
 export const OddyChat = () => {
-	const [messages, setMessages] = useState<{ role: Role; message: string }[]>([])
+	const [messages, setMessages] = useState<ChatMsg[]>([])
 	const [input, setInput] = useState("")
 	const [agent, setAgent] = useState<"oddy" | "froggy">("froggy")
 	const [isPride, setIsPride] = useState(false)
 	const ws = useRef<WebSocket | null>(null)
 
-	// (Re)connect when agent / pride changes
 	useEffect(() => {
 		const url = new URL("ws://localhost:4001")
 		url.searchParams.set("agent", agent)
@@ -24,10 +27,15 @@ export const OddyChat = () => {
 			console.log("✅ Connected to WebSocket")
 			setMessages([])
 		}
+
 		ws.current.onmessage = (event) => {
 			if (event.data === "Successfully connected") return
-			setMessages((m) => [...m, { role: "oddy", message: String(event.data) }])
+			setMessages((m) => [
+				...m,
+				{ id: crypto.randomUUID(), role: "oddy", message: String(event.data) },
+			])
 		}
+
 		ws.current.onerror = (err) => console.error("❌ WebSocket error:", err)
 		ws.current.onclose = () => console.log("🔌 WebSocket closed")
 
@@ -40,7 +48,9 @@ export const OddyChat = () => {
 		e.preventDefault()
 		const trimmed = input.trim()
 		if (!trimmed) return
-		setMessages((m) => [...m, { role: "user", message: trimmed }])
+
+		const msg: ChatMsg = { id: crypto.randomUUID(), role: "user", message: trimmed }
+		setMessages((m) => [...m, msg])
 		ws.current?.send(trimmed)
 		setInput("")
 	}
@@ -56,6 +66,7 @@ export const OddyChat = () => {
 					<option value="oddy">Oddy</option>
 					<option value="froggy">Froggy</option>
 				</select>
+
 				<label className="text-sm flex items-center gap-2">
 					<input
 						type="checkbox"
@@ -67,9 +78,9 @@ export const OddyChat = () => {
 			</div>
 
 			<div className="bg-white/90 backdrop-blur rounded-lg shadow max-h-[50vh] overflow-auto p-3 space-y-2">
-				{messages.map((m, i) => (
+				{messages.map((m) => (
 					<p
-						key={i + m.message}
+						key={m.id}
 						className={`max-w-[85%] rounded px-3 py-2 ${
 							m.role === "oddy"
 								? "bg-gray-100 text-gray-900 self-start"
@@ -80,7 +91,9 @@ export const OddyChat = () => {
 					</p>
 				))}
 				{messages.length === 0 && (
-					<p className="text-gray-500 text-sm">Si hei til {agent === "froggy" ? "Froggy 🐸" : "Oddy"}…</p>
+					<p className="text-gray-500 text-sm">
+						Si hei til {agent === "froggy" ? "Froggy 🐸" : "Oddy"}…
+					</p>
 				)}
 			</div>
 
